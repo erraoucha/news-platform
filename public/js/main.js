@@ -77,13 +77,21 @@ async function displayNews(news) {
 
 // Fonction pour afficher un message d'erreur
 function showError(message) {
-    const container = document.getElementById('news-container');
-    container.innerHTML = `
-        <div class="alert alert-danger" role="alert">
-            ${message}
-        </div>
-    `;
+    const container = document.getElementById('news-container'); // Conteneur principal où les articles sont affichés
+
+    // Vider le conteneur pour afficher uniquement le message d'erreur
+    container.innerHTML = '';
+
+    // Créer un élément d'alerte Bootstrap
+    const alert = document.createElement('div');
+    alert.className = 'alert alert-danger';
+    alert.role = 'alert';
+    alert.innerText = message;
+
+    // Ajouter l'alerte au conteneur
+    container.appendChild(alert);
 }
+
 
 // Initialisation
 document.addEventListener('DOMContentLoaded', fetchLatestNews);
