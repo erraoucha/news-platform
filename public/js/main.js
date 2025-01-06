@@ -1,4 +1,4 @@
- 
+
 // Fonction pour récupérer et afficher les derniers articles
 async function fetchLatestNews() {
     try {
@@ -97,4 +97,3 @@ function showError(message) {
 document.addEventListener('DOMContentLoaded', fetchLatestNews);
 
 
- 
