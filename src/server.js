@@ -13,6 +13,20 @@ app.use(express.static('public'));
 // Routes
 app.use('/api/news', newsRoutes);
 
+// Middleware de logging
+app.use((req, res, next) => {
+  const now = new Date().toISOString(); // Date et heure actuelles
+  const method = req.method; // Méthode HTTP (GET, POST, etc.)
+  const url = req.url; // URL demandée
+  const ip = req.ip; // Adresse IP du client
+
+  // Affichage dans la console
+  console.log(`[${now}] ${method} ${url} - IP: ${ip}`);
+
+  next(); // Passer au middleware suivant ou à la route
+});
+
+
 // TODO: Question 3 - Ajouter un middleware pour gérer les erreurs
 app.use((err, req, res, next) => {
   console.error(err.stack); // Log de l'erreur pour le débogage
